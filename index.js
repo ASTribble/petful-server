@@ -44,7 +44,7 @@ app.get('/api/dog', (req, res) =>{
 
 app.delete('/api/dog', (req, res) => {
   dogs.shift();
-  res.json(dogs);
+  res.json(dogs[0]);
 });
 
 
