@@ -24,7 +24,7 @@ app.use(
     origin: CLIENT_ORIGIN
   })
 );
-
+app.use('/static', express.static('public'));
 app.use(bodyParser.json());
 
 
@@ -34,7 +34,7 @@ app.get('/api/cat', (req, res) => {
 
 app.delete('/api/cat', (req, res) =>{
   cats.shift();
-  res.json(cats[0]);
+  res.json('Cat was adopted');
 
 });
 
@@ -44,7 +44,7 @@ app.get('/api/dog', (req, res) =>{
 
 app.delete('/api/dog', (req, res) => {
   dogs.shift();
-  res.json(dogs[0]);
+  res.json('Dog was Adopted');
 });
 
 
