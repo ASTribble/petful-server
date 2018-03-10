@@ -1,14 +1,8 @@
 'use strict';
-module.exports = [
-  // {
-  //   imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
-  //   imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
-  //   name: 'Zeus',
-  //   sex: 'Male',
-  //   age: 3,
-  //   breed: 'Golden Retriever',
-  //   story: 'Owner Passed away'
-  // },
+const Queue = require('./queue');
+const dogs = new Queue();
+
+const dogArray = [
   {
     imageURL: 'static/pics/small_dogs/grover.jpeg',
     imageDescription: 'White and grey dog pondering her existence.',
@@ -46,3 +40,23 @@ module.exports = [
     story: 'Owner Passed away'
   }
 ];
+
+function seedQueue(q, array) {
+  for (let i = 0; i < array.length; i++) {
+    q.enqueue(array[i]);
+  }
+}
+
+seedQueue(dogs, dogArray);
+console.log(dogs.peek());
+
+module.exports = dogs;
+  // {
+  //   imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
+  //   imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
+  //   name: 'Zeus',
+  //   sex: 'Male',
+  //   age: 3,
+  //   breed: 'Golden Retriever',
+  //   story: 'Owner Passed away'
+  // },

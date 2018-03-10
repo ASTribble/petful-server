@@ -1,14 +1,9 @@
 'use strict';
-module.exports = [
-  // {
-  //   imageURL: 'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg',
-  //   imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
-  //   name: 'Fluffy',
-  //   sex: 'Female',
-  //   age: 2,
-  //   breed: 'Bengal',
-  //   story: 'Thrown on the street'
-  // },
+const Queue = require('./queue');
+
+const cats = new Queue();
+
+const catArray = [
   {
     imageURL: 'static/pics/small_cats/alice.jpeg',
     imageDescription: 'Kitten with grey head and white face and chin.',
@@ -46,3 +41,22 @@ module.exports = [
     story: 'Thrown on the street'
   }
 ];
+
+function seedQueue(q, array){
+  for(let i = 0; i < array.length; i++){
+    q.enqueue(array[i]);
+  }
+}
+
+seedQueue(cats, catArray);
+console.log(cats.peek());
+module.exports = cats;
+  // {
+  //   imageURL: 'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg',
+  //   imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
+  //   name: 'Fluffy',
+  //   sex: 'Female',
+  //   age: 2,
+  //   breed: 'Bengal',
+  //   story: 'Thrown on the street'
+  // },

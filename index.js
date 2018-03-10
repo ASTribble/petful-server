@@ -24,26 +24,27 @@ app.use(
     origin: CLIENT_ORIGIN
   })
 );
+
 app.use('/static', express.static('public'));
 app.use(bodyParser.json());
 
 
 app.get('/api/cat', (req, res) => {
-  res.json(cats[0]);
+  res.json(cats.peek());
 });
 
 app.delete('/api/cat', (req, res) =>{
-  cats.shift();
+  cats.dequeue();
   return res.status(204).send();
 
 });
 
 app.get('/api/dog', (req, res) =>{
-  res.json(dogs[0]);
+  res.json(dogs.peek());
 });
 
 app.delete('/api/dog', (req, res) => {
-  dogs.shift();
+  dogs.dequeue();
   return res.status(204).send();
 });
 
